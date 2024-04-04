@@ -83,7 +83,7 @@ catalog:
 
     # Include emojivoto sample
     - type: file
-      target: ../../plugins/linkerd-backend/sample/emojivoto.yaml
+      target: ../../plugins/linkerd-backend/sample/catalog.yaml
 
     ## Uncomment these lines to add more example data
     # - type: url

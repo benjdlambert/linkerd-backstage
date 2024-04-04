@@ -108,8 +108,8 @@ linkerd check
 
 ```sh
 
-curl --proto '=https' --tlsv1.2 -sSfL https://run.linkerd.io/emojivoto.yml \
-  | kubectl apply -f -
+kubectl apply -f plugins/linkerd-backend/sample/emojivoto.yaml
+
 
 ```
 
