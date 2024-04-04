@@ -54,7 +54,12 @@ import {
   RELATION_PART_OF,
   RELATION_PROVIDES_API,
 } from '@backstage/catalog-model';
-import { EntityKubernetesContent } from '@backstage/plugin-kubernetes';
+import {
+  EntityKubernetesContent,
+  isKubernetesAvailable,
+} from '@backstage/plugin-kubernetes';
+
+import { LinkerdDependenciesCard } from '@internal/linkerd';
 
 import { TechDocsAddons } from '@backstage/plugin-techdocs-react';
 import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
@@ -129,7 +134,14 @@ const overviewContent = (
       <EntityAboutCard variant="gridItem" />
     </Grid>
     <Grid item md={6} xs={12}>
-      <EntityCatalogGraphCard variant="gridItem" height={400} />
+      <EntitySwitch>
+        <EntitySwitch.Case if={isKubernetesAvailable}>
+          <LinkerdDependenciesCard />
+        </EntitySwitch.Case>
+        <EntitySwitch.Case>
+          <EntityCatalogGraphCard variant="gridItem" height={400} />
+        </EntitySwitch.Case>
+      </EntitySwitch>
     </Grid>
 
     <Grid item md={4} xs={12}>
@@ -144,14 +156,18 @@ const overviewContent = (
 const serviceEntityPage = (
   <EntityLayout>
     <EntityLayout.Route path="/" title="Overview">
-      {overviewContent}
+      <>{overviewContent}</>
     </EntityLayout.Route>
 
     <EntityLayout.Route path="/ci-cd" title="CI/CD">
       {cicdContent}
     </EntityLayout.Route>
 
-    <EntityLayout.Route path="/kubernetes" title="Kubernetes">
+    <EntityLayout.Route
+      path="/kubernetes"
+      title="Kubernetes"
+      if={isKubernetesAvailable}
+    >
       <EntityKubernetesContent refreshIntervalMs={30000} />
     </EntityLayout.Route>
 
@@ -186,14 +202,27 @@ const serviceEntityPage = (
 const websiteEntityPage = (
   <EntityLayout>
     <EntityLayout.Route path="/" title="Overview">
-      {overviewContent}
+      <>
+        {overviewContent}
+        <EntitySwitch>
+          <EntitySwitch.Case if={isKubernetesAvailable}>
+            <Grid container spacing={3} alignItems="stretch">
+              <LinkerdDependenciesCard />
+            </Grid>
+          </EntitySwitch.Case>
+        </EntitySwitch>
+      </>
     </EntityLayout.Route>
 
     <EntityLayout.Route path="/ci-cd" title="CI/CD">
       {cicdContent}
     </EntityLayout.Route>
 
-    <EntityLayout.Route path="/kubernetes" title="Kubernetes">
+    <EntityLayout.Route
+      path="/kubernetes"
+      title="Kubernetes"
+      if={isKubernetesAvailable}
+    >
       <EntityKubernetesContent refreshIntervalMs={30000} />
     </EntityLayout.Route>
 
