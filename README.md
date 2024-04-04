@@ -57,6 +57,7 @@ rules:
       - limitranges
       - resourcequotas
       - daemonsets
+      - services/proxy
     verbs:
       - get
       - list

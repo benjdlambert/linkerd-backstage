@@ -10,20 +10,23 @@ import { createRouter } from './service/router';
  * @public
  */
 export const linkerdPlugin = createBackendPlugin({
-  pluginId: 'linkerdPlugin',
+  pluginId: 'linkerd',
   register(env) {
     env.registerInit({
       deps: {
         httpRouter: coreServices.httpRouter,
         logger: coreServices.logger,
+        auth: coreServices.auth,
+        httpAuth: coreServices.httpAuth,
+        discovery: coreServices.discovery,
       },
-      async init({
-        httpRouter,
-        logger,
-      }) {
+      async init({ httpRouter, logger, auth, httpAuth, discovery }) {
         httpRouter.use(
           await createRouter({
             logger,
+            auth,
+            httpAuth,
+            discovery,
           }),
         );
         httpRouter.addAuthPolicy({

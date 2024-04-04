@@ -6099,11 +6099,14 @@ __metadata:
     "@backstage/plugin-auth-backend": "npm:^0.22.3"
     "@backstage/plugin-auth-backend-module-guest-provider": "npm:^0.1.2"
     "@types/express": "npm:*"
+    "@types/qs": "npm:^6"
     "@types/supertest": "npm:^2.0.12"
     express: "npm:^4.17.1"
     express-promise-router: "npm:^4.1.0"
+    ms: "npm:^2.1.3"
     msw: "npm:^1.0.0"
     node-fetch: "npm:^2.6.7"
+    qs: "npm:^6.12.0"
     supertest: "npm:^6.2.4"
     winston: "npm:^3.2.1"
     yn: "npm:^4.0.0"
@@ -11666,7 +11669,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/qs@npm:*":
+"@types/qs@npm:*, @types/qs@npm:^6":
   version: 6.9.14
   resolution: "@types/qs@npm:6.9.14"
   checksum: 10c0/11ad1eb7f6d7c216002789959d88acc7c43f72854fa4335f01de0df41b4c4024668dace8a37ba12270314345ede0ec6b07f93053a45e7bd4cd7318a3dcf0b6b8
@@ -23884,7 +23887,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ms@npm:2.1.3, ms@npm:^2.0.0, ms@npm:^2.1.1":
+"ms@npm:2.1.3, ms@npm:^2.0.0, ms@npm:^2.1.1, ms@npm:^2.1.3":
   version: 2.1.3
   resolution: "ms@npm:2.1.3"
   checksum: 10c0/d924b57e7312b3b63ad21fc5b3dc0af5e78d61a1fc7cfb5457edaf26326bf62be5307cc87ffb6862ef1c2b33b0233cdb5d4f01c4c958cc0d660948b65a287a48
@@ -26736,7 +26739,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"qs@npm:^6.10.1, qs@npm:^6.10.2, qs@npm:^6.11.0, qs@npm:^6.11.2, qs@npm:^6.9.1, qs@npm:^6.9.4":
+"qs@npm:^6.10.1, qs@npm:^6.10.2, qs@npm:^6.11.0, qs@npm:^6.11.2, qs@npm:^6.12.0, qs@npm:^6.9.1, qs@npm:^6.9.4":
   version: 6.12.0
   resolution: "qs@npm:6.12.0"
   dependencies:
